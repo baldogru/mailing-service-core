@@ -1,1 +1,3 @@
 # mailing-service-core
+
+test
