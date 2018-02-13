@@ -4,6 +4,7 @@ import org.baldogru.mailingservice.core.dto.Mail;
 import org.baldogru.mailingservice.core.dto.MailAttachment;
 import org.baldogru.mailingservice.core.dto.MailSendResult;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,7 +25,7 @@ public interface BaldogruMailingService {
      * @param mails
      * @return
      */
-    Map<Mail, MailSendResult> sendMails(Mail... mails);
+    Map<Mail, MailSendResult> sendMails(List<Mail> mails);
 
     /**
      * Przygotowuje załącznik do wysyłki (m.in. walidacja załącznika, zapisanie go w odpowiedniej lokalizacji)
@@ -39,6 +40,6 @@ public interface BaldogruMailingService {
      * @param attachments
      * @return
      */
-    Map<MailAttachment, String> prepareAttachments(MailAttachment... attachments);
+    Map<MailAttachment, String> prepareAttachments(List<MailAttachment> attachments);
 
 }
