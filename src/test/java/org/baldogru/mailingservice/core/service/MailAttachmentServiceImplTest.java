@@ -1,19 +1,22 @@
 package org.baldogru.mailingservice.core.service;
 
-import org.junit.Before;
+import org.baldogru.mailingservice.core.dto.MailAttachment;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MailAttachmentServiceImplTest {
 
-    @Before
-    public void setUp() throws Exception {
-    }
+    @Mock
+    MailAttachment mailAttachment;
+    @InjectMocks
+    MailAttachmentServiceImpl mailAttachmentService;
 
     @Test
-    public void prepareAttachment() throws Exception {
+    public void testPrepareAttachment() {
     }
 
 }

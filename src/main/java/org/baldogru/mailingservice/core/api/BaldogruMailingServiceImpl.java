@@ -24,7 +24,7 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
         this.mailSendingService = mailSendingService;
     }
 
-    //Brakowało adnotacji @Override - zawsze trzeba dodawać przy implementowaniu metod z interfejsów/klas nadrzędnych
+
     @Override
     public MailSendResult sendMail(Mail mail) {
         return mailSendingService.sendMail(mail);
@@ -32,12 +32,10 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
 
     @Override
     public Map<Mail, MailSendResult> sendMails(List<Mail> mails) {
-        //TODO zmieniłem to na List, prośba o zrefaktorowanie na Java 8 Stream
         Map<Mail, MailSendResult> mailSendResultMap = new HashMap<>();
-        for (Mail mail : mails) {
-            MailSendResult mailSendResult = sendMail(mail);
-            mailSendResultMap.put(mail, mailSendResult);
-        }
+        mails.forEach((mail) -> {MailSendResult result = sendMail(mail);
+                                mailSendResultMap.put(mail, result);
+        });
         return mailSendResultMap;
     }
 
@@ -48,12 +46,10 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
 
     @Override
     public Map<MailAttachment, String> prepareAttachments(List<MailAttachment> attachments) {
-        //TODO zmieniłem to na List, prośba o zrefaktorowanie na Java 8 Stream
         Map<MailAttachment, String> mailAttachmentMap = new HashMap<>();
-        for (MailAttachment attachment : attachments) {
-            String prepareAttachmentResult = prepareAttachment(attachment);
-            mailAttachmentMap.put(attachment, prepareAttachmentResult);
-        }
+        attachments.forEach((attachment) -> {String result = prepareAttachment(attachment);
+                                            mailAttachmentMap.put(attachment, result);
+        });
         return mailAttachmentMap;
     }
 
