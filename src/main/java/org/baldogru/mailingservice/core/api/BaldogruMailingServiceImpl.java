@@ -8,6 +8,7 @@ import org.baldogru.mailingservice.core.service.MailSendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -27,7 +28,12 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
     }
 
     public Map<Mail, MailSendResult> sendMails(Mail... mails) {
-        return null;
+        Map<Mail, MailSendResult> mailSendResultMap = new HashMap<>();
+        for (Mail mail : mails) {
+            MailSendResult mailSendResult = sendMail(mail);
+            mailSendResultMap.put(mail, mailSendResult);
+        }
+        return mailSendResultMap;
     }
 
     public String prepareAttachment(MailAttachment attachment) {
@@ -35,6 +41,11 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
     }
 
     public Map<MailAttachment, String> prepareAttachments(MailAttachment... attachments) {
-        return null;
+        Map<MailAttachment, String> mailAttachmentMap = new HashMap<>();
+        for (MailAttachment attachment : attachments) {
+            String prepareAttachmentResult = prepareAttachment(attachment);
+            mailAttachmentMap.put(attachment, prepareAttachmentResult);
+        }
+        return mailAttachmentMap;
     }
 }
