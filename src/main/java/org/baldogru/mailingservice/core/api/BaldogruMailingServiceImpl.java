@@ -8,10 +8,8 @@ import org.baldogru.mailingservice.core.service.MailSendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -35,10 +33,6 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
 
     @Override
     public Map<Mail, MailSendResult> sendMails(List<Mail> mails) {
-        //Lamby powinny byc jednolinijkowe. Jeżeli musimy użyć nawiasów wąsatych w lambdzie to znaczy,
-        //że źle z nich korzystamy. One mają poprawiać czytelność kodu, tymczasem tworzenie wielolinijkowych
-        //lambd pogarsza czytelność. Więcej informacji w linku poniżej:
-        //https://www.ibm.com/developerworks/library/j-java8idioms6/index.html
         return mails
                 .stream()
                 .collect(Collectors.toMap(Function.identity(), this::sendMail));
@@ -51,13 +45,9 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
 
     @Override
     public Map<MailAttachment, String> prepareAttachments(List<MailAttachment> attachments) {
-        //TODO zrefaktorować na wzór sendMails. Sprawdzić czy test jednostkowy dalej działa poprawnie.
-        Map<MailAttachment, String> mailAttachmentMap = new HashMap<>();
-        attachments.forEach((attachment) -> {
-            String result = prepareAttachment(attachment);
-            mailAttachmentMap.put(attachment, result);
-        });
-        return mailAttachmentMap;
+        return attachments
+                .stream()
+                .collect(Collectors.toMap(Function.identity(), this::prepareAttachment));
     }
 
 }
