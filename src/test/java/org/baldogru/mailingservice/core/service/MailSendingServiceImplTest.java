@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertNull;
+
 @RunWith(MockitoJUnitRunner.class)
 public class MailSendingServiceImplTest {
 
@@ -20,6 +22,9 @@ public class MailSendingServiceImplTest {
 
     @Test
     public void testSendMail() {
+        MailSendResult result = mailSendingService.sendMail(mail);
+
+        assertNull(result);
     }
 
 }

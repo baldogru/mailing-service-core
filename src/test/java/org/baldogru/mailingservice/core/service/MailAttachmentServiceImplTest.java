@@ -7,6 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertNull;
+
 @RunWith(MockitoJUnitRunner.class)
 public class MailAttachmentServiceImplTest {
 
@@ -17,6 +19,9 @@ public class MailAttachmentServiceImplTest {
 
     @Test
     public void testPrepareAttachment() {
+        String result = mailAttachmentService.prepareAttachment(mailAttachment);
+
+        assertNull(result);
     }
 
 }
