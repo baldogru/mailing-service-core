@@ -1,7 +1,7 @@
 package org.baldogru.mailingservice.core.api;
 
 import org.baldogru.mailingservice.core.dto.Mail;
-import org.baldogru.mailingservice.core.dto.MailAttachment;
+import org.baldogru.mailingservice.core.dto.MailAttachmentDTO;
 import org.baldogru.mailingservice.core.dto.MailSendResult;
 import org.baldogru.mailingservice.core.service.MailAttachmentService;
 import org.baldogru.mailingservice.core.service.MailSendingService;
@@ -39,12 +39,12 @@ public final class BaldogruMailingServiceImpl implements BaldogruMailingService 
     }
 
     @Override
-    public String prepareAttachment(MailAttachment attachment) {
+    public String prepareAttachment(MailAttachmentDTO attachment) {
         return mailAttachmentService.prepareAttachment(attachment);
     }
 
     @Override
-    public Map<MailAttachment, String> prepareAttachments(List<MailAttachment> attachments) {
+    public Map<MailAttachmentDTO, String> prepareAttachments(List<MailAttachmentDTO> attachments) {
         return attachments
                 .stream()
                 .collect(Collectors.toMap(Function.identity(), this::prepareAttachment));

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Immutable
-public final class MailAttachment {
+public class MailAttachmentDTO {
     private final Long id;
     private final String name;
     private final String extension;
