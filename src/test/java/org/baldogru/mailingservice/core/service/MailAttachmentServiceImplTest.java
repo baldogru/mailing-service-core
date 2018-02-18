@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNull;
 public class MailAttachmentServiceImplTest {
 
     @Mock
-    priavate MailAttachmentDTO mailAttachmentDTO;
+    private MailAttachmentDTO mailAttachmentDTO;
     @InjectMocks
     private MailAttachmentServiceImpl mailAttachmentService;
 
