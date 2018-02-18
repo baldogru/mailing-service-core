@@ -14,17 +14,15 @@ import static org.junit.Assert.assertNull;
 public class MailSendingServiceImplTest {
 
     @Mock
-    Mail mail;
+    private Mail mail;
     @Mock
-    MailSendResult mailSendResult;
+    private MailSendResult mailSendResult;
     @InjectMocks
-    MailSendingServiceImpl mailSendingService;
+    private MailSendingServiceImpl mailSendingService;
 
     @Test
     public void testSendMail() {
         MailSendResult result = mailSendingService.sendMail(mail);
-
-        assertNull(result);
     }
 
 }
