@@ -1,7 +1,7 @@
 package org.baldogru.mailingservice.core.api;
 
 import org.baldogru.mailingservice.core.dto.Mail;
-import org.baldogru.mailingservice.core.dto.MailAttachment;
+import org.baldogru.mailingservice.core.dto.MailAttachmentDTO;
 import org.baldogru.mailingservice.core.dto.MailSendResult;
 
 import java.util.List;
@@ -33,13 +33,13 @@ public interface BaldogruMailingService {
      * @param attachment
      * @return
      */
-    String prepareAttachment(MailAttachment attachment);
+    String prepareAttachment(MailAttachmentDTO attachment);
 
     /**
      * Przygotowuje załączniki do wysyłki i zwraca mapę z ich id (klucz - załącznik, wartość - id załącznika)
      * @param attachments
      * @return
      */
-    Map<MailAttachment, String> prepareAttachments(List<MailAttachment> attachments);
+    Map<MailAttachmentDTO, String> prepareAttachments(List<MailAttachmentDTO> attachments);
 
 }

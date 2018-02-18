@@ -1,7 +1,7 @@
 package org.baldogru.mailingservice.core.api;
 
 import org.baldogru.mailingservice.core.dto.Mail;
-import org.baldogru.mailingservice.core.dto.MailAttachment;
+import org.baldogru.mailingservice.core.dto.MailAttachmentDTO;
 import org.baldogru.mailingservice.core.dto.MailSendResult;
 import org.baldogru.mailingservice.core.service.MailAttachmentService;
 import org.baldogru.mailingservice.core.service.MailSendingService;
@@ -31,7 +31,7 @@ public class BaldogruMailingServiceImplTest {
     @Mock
     private MailSendResult mailSendResult;
     @Mock
-    private MailAttachment mailAttachment;
+    private MailAttachmentDTO mailAttachmentDTO;
     @InjectMocks
     private BaldogruMailingServiceImpl baldogruMailingService;
 
@@ -64,27 +64,27 @@ public class BaldogruMailingServiceImplTest {
 
     @Test
     public void testPrepareAttachment() {
-        when(mailAttachmentService.prepareAttachment(mailAttachment)).thenReturn(anyString());
+        when(mailAttachmentService.prepareAttachment(mailAttachmentDTO)).thenReturn(anyString());
 
-        String result = baldogruMailingService.prepareAttachment(mailAttachment);
+        String result = baldogruMailingService.prepareAttachment(mailAttachmentDTO);
 
         assertNotNull(result);
-        verify(mailAttachmentService, times(1)).prepareAttachment(mailAttachment);
+        verify(mailAttachmentService, times(1)).prepareAttachment(mailAttachmentDTO);
     }
 
     @Test
     public void testPrepareAttachments() {
-        List<MailAttachment> attachments = new ArrayList<>();
-        attachments.add(mock(MailAttachment.class));
-        attachments.add(mock(MailAttachment.class));
-        attachments.add(mock(MailAttachment.class));
-        when(mailAttachmentService.prepareAttachment(any(MailAttachment.class))).thenReturn(anyString());
+        List<MailAttachmentDTO> attachments = new ArrayList<>();
+        attachments.add(mock(MailAttachmentDTO.class));
+        attachments.add(mock(MailAttachmentDTO.class));
+        attachments.add(mock(MailAttachmentDTO.class));
+        when(mailAttachmentService.prepareAttachment(any(MailAttachmentDTO.class))).thenReturn(anyString());
 
-        Map<MailAttachment, String> result = baldogruMailingService.prepareAttachments(attachments);
+        Map<MailAttachmentDTO, String> result = baldogruMailingService.prepareAttachments(attachments);
         int attachmentsSize = attachments.size();
 
         assertNotNull(result);
         assertEquals(result.size(), attachmentsSize);
-        verify(mailAttachmentService, times(attachmentsSize)).prepareAttachment(any(MailAttachment.class));
+        verify(mailAttachmentService, times(attachmentsSize)).prepareAttachment(any(MailAttachmentDTO.class));
     }
 }
