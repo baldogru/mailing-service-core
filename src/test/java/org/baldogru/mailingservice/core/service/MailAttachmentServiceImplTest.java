@@ -13,15 +13,13 @@ import static org.junit.Assert.assertNull;
 public class MailAttachmentServiceImplTest {
 
     @Mock
-    MailAttachmentDTO mailAttachmentDTO;
+    priavate MailAttachmentDTO mailAttachmentDTO;
     @InjectMocks
-    MailAttachmentServiceImpl mailAttachmentService;
+    private MailAttachmentServiceImpl mailAttachmentService;
 
     @Test
     public void testPrepareAttachment() {
         String result = mailAttachmentService.prepareAttachment(mailAttachmentDTO);
-
-        assertNull(result);
     }
 
 }
