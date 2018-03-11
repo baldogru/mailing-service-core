@@ -1,6 +1,7 @@
 package org.baldogru.mailingservice.core.service;
 
 import org.baldogru.mailingservice.core.dto.MailAttachmentDTO;
+import org.baldogru.mailingservice.core.service.mail.attachment.MailAttachmentServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
